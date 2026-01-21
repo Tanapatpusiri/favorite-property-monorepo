@@ -1,4 +1,16 @@
 {
-  "name": "favorite-property",
-  "packageManager": "yarn@4.4.1"
+  "name": "favorite-property-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "prisma:generate": "cd apps/api && npx prisma generate",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && npm run dev",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
 }
